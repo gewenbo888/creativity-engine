@@ -1,0 +1,93 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --void: #05040a;
+  --iris: #9b7cff;
+  --cyan: #33d6e8;
+  --spark: #ffc94d;
+  --mint: #3fe3a8;
+  --rose: #ff5fa2;
+  --ink: #f4f1ff;
+}
+
+html {
+  scroll-behavior: smooth;
+  background: var(--void);
+  color: var(--ink);
+}
+
+body {
+  background-color: #05040a;
+  background-image:
+    radial-gradient(ellipse 1100px 580px at 12% -8%, rgba(124, 92, 255, 0.16), transparent 60%),
+    radial-gradient(ellipse 900px 520px at 90% 2%, rgba(51, 214, 232, 0.10), transparent 62%),
+    radial-gradient(ellipse 1000px 620px at 50% 118%, rgba(255, 95, 162, 0.10), transparent 60%),
+    radial-gradient(ellipse 700px 700px at 78% 70%, rgba(63, 227, 168, 0.06), transparent 60%);
+  font-family: "Spectral", ui-serif, Georgia, serif;
+  letter-spacing: 0.004em;
+}
+
+::selection { background: rgba(124, 92, 255, 0.45); color: #f4f1ff; }
+
+.display { font-family: "Syne", ui-sans-serif, system-ui, sans-serif; font-weight: 700; letter-spacing: -0.01em; }
+.zh { font-family: "Noto Serif SC", serif; }
+.label-mono {
+  font-family: "JetBrains Mono", ui-monospace, monospace;
+  letter-spacing: 0.22em; text-transform: uppercase; font-size: 0.66rem; color: var(--iris);
+}
+
+/* glowing idea-title */
+.idea-text {
+  color: #e9e2ff;
+  text-shadow: 0 0 26px rgba(124, 92, 255, 0.6), 0 0 70px rgba(51, 214, 232, 0.28);
+}
+.spark-text {
+  background: linear-gradient(96deg, #b79bff 0%, #33d6e8 42%, #ffc94d 72%, #ff5fa2 100%);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+
+/* frosted idea-card panel */
+.idea {
+  background: linear-gradient(160deg, rgba(29, 23, 64, 0.55), rgba(8, 7, 18, 0.9));
+  border: 1px solid rgba(212, 196, 255, 0.10);
+  backdrop-filter: blur(9px);
+  transition: border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+}
+.idea:hover { border-color: rgba(124, 92, 255, 0.4); box-shadow: 0 0 40px -16px rgba(124,92,255,0.7); }
+
+.rule-iris {
+  background: linear-gradient(90deg, transparent, rgba(124,92,255,0.6) 16%, rgba(51,214,232,0.5) 50%, rgba(255,95,162,0.45) 84%, transparent);
+}
+
+/* drifting glow node */
+@keyframes drift {
+  0% { transform: translateY(0) scale(0.9); opacity: 0; }
+  18% { opacity: 0.85; }
+  100% { transform: translateY(-260px) scale(1.25); opacity: 0; }
+}
+.drift { animation: drift linear infinite; }
+
+/* flowing dashed link */
+@keyframes flow { to { stroke-dashoffset: -48; } }
+.flow { stroke-dasharray: 5 8; animation: flow 1.7s linear infinite; }
+
+/* synapse pulse */
+@keyframes synapse { 0%,100% { opacity: 0.45; } 50% { opacity: 1; } }
+.pulse { animation: synapse 2.4s ease-in-out infinite; }
+
+/* slow spin for orbit glyphs */
+@keyframes spin360 { to { transform: rotate(360deg); } }
+.spin-slow { animation: spin360 26s linear infinite; transform-origin: center; }
+
+@keyframes riseIn { from { opacity: 0; transform: translateY(22px); } to { opacity: 1; transform: translateY(0); } }
+.rise-in { animation: riseIn 0.9s cubic-bezier(0.2,0.7,0.2,1) both; }
+.lang-fade { animation: riseIn 0.45s ease both; }
+
+/* shimmering gradient marquee text */
+@keyframes hueShift { to { filter: hue-rotate(360deg); } }
+
+::-webkit-scrollbar { width: 10px; background: #05040a; }
+::-webkit-scrollbar-thumb { background: linear-gradient(180deg, #1d1740, #2a2058); border-radius: 5px; }
+::-webkit-scrollbar-thumb:hover { background: linear-gradient(180deg, #2a2058, #7c5cff); }
